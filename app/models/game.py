@@ -3,6 +3,8 @@ from app.models.player import Player
 player1 = Player('John', 'Rock')
 player2 = Player('Mary', 'Scissors')
 
+players = [player1, player2]
+
 def compare_input(player1, player2):
     if player1.choice == player2.choice:
         return 'Draw'
