@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Rock, Paper, Scissors!</h1>
+
+{% if winner == None %}
+    <h2>Draw</h2>
+{% endif %}
+
+{% if winner == players[0] %}
+    <h2>{{players[0].name}} Wins!</h2>
+{% endif %}
+
+{% if winner == players[1] %}
+    <h2>{{players[1].name}} Wins!</h2>
+{% endif %}
+
+{% endblock %}

@@ -1,13 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Upcoming Events!</h1>
+    <h1>Rock, Paper, Scissors!</h1>
 
-    <form class="form-inline" action="/events" method="post">
+    <form class="form-inline" action="/play" method="post">
         <label for="name">Name</label>
         <input type="text" name="name" id="name">
-        <label for="choice">choice</label>
+        <label for="choice">Choice</label>
         <input type="choice" name="choice" id="choice">
+        <input type="submit" value="Add player">
     </form>
+    {% if players|length == 2 %}
+    <form class="form" action="/{{players[0].choice}}/{{players[1].choice}}" method="post">
+        <input type="submit" value="Play">
+    </form>
+    {% endif %}
     
+    <ul>
+        {% for player in players %}
+        <li>{{player.name}}</li>
+        <li>{{player.choice}}</li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}
