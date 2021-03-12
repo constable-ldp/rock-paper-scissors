@@ -1,16 +1,18 @@
 from app.models.player import Player
 
-players = []
+class Game:
+    def __init__(self, players):
+        self.players = []
 
-def add_player(player):
-    players.append(player)
+    def add_player(self, player):
+        self.players.append(player)
 
-def compare_input(player1, player2):
-    if player1.choice == player2.choice:
-        return 
-    if player1.choice == 'Rock' and player2.choice == 'Scissors' \
-    or player1.choice == 'Paper' and player2.choice == 'Rock' \
-    or player1.choice == 'Scissors' and player2.choice == 'Paper':
-        return player1
-    else:
-        return player2
+    def compare_input(self):
+        if self.players[0].choice == self.players[1].choice:
+            return 
+        if self.players[0].choice == 'Rock' and self.players[1].choice == 'Scissors' \
+        or self.players[0].choice == 'Paper' and self.players[1].choice == 'Rock' \
+        or self.players[0].choice == 'Scissors' and self.players[1].choice == 'Paper':
+            return self.players[0]
+        else:
+            return self.players[1]
