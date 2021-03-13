@@ -9,11 +9,11 @@
 {% endif %}
 
 {% if winner == players.players[0] %}
-    <h2>{{players.players[0].name}} Wins!</h2>
+    <h2>{{players.players[0].name}} {{scores[0]}} Wins!</h2>
 {% endif %}
 
 {% if winner == players.players[1] %}
-    <h2>{{players.players[1].name}} Wins!</h2>
+    <h2>{{players.players[1].name}} {{scores[1]}} Wins!</h2>
 {% endif %}
 
 <form class="form" action="/play/restart" method="post">

@@ -4,6 +4,7 @@ from app.models.game import Game
 from app.models.player import Player
 import random
 
+scores = [0, 0]
 players = Game([])
 names = []
 
@@ -15,6 +16,7 @@ def index():
 def restart():
     players.reset_game()
     names.clear()
+    scores = [0, 0]
     return redirect('/')
 
 @app.route('/play-again/restart', methods=['POST'])
@@ -61,8 +63,8 @@ def same_players_reset():
 
 @app.route('/rock/rock')
 def rock_draw():
-    winner = players.compare_input()
-    return render_template('result.html', title='rock_rock', players=players, winner=winner)
+    winner = players.compare_input(scores)
+    return render_template('result.html', title='rock_rock', players=players, winner=winner, scores=scores)
 
 @app.route('/rock/rock', methods=['POST'])
 def rock_draw_result():
@@ -70,8 +72,8 @@ def rock_draw_result():
 
 @app.route('/rock/scissors')
 def rock_scissors():
-    winner = players.compare_input()
-    return render_template('result.html', title='rock_scissors', players=players, winner=winner)
+    winner = players.compare_input(scores)
+    return render_template('result.html', title='rock_scissors', players=players, winner=winner, scores=scores)
 
 @app.route('/rock/scissors', methods=['POST'])
 def rock_scissors_result():
@@ -79,8 +81,8 @@ def rock_scissors_result():
 
 @app.route('/rock/paper')
 def rock_paper():
-    winner = players.compare_input()
-    return render_template('result.html', title='rock_paper', players=players, winner=winner)
+    winner = players.compare_input(scores)
+    return render_template('result.html', title='rock_paper', players=players, winner=winner, scores=scores)
 
 @app.route('/rock/paper', methods=['POST'])
 def rock_paper_result():
@@ -88,8 +90,8 @@ def rock_paper_result():
 
 @app.route('/paper/rock')
 def paper_rock():
-    winner = players.compare_input()
-    return render_template('result.html', title='paper_rock', players=players, winner=winner)
+    winner = players.compare_input(scores)
+    return render_template('result.html', title='paper_rock', players=players, winner=winner, scores=scores)
 
 @app.route('/paper/rock', methods=['POST'])
 def paper_rock_result():
@@ -97,8 +99,8 @@ def paper_rock_result():
 
 @app.route('/paper/scissors')
 def paper_scissors():
-    winner = players.compare_input()
-    return render_template('result.html', title='paper_scissors', players=players, winner=winner)
+    winner = players.compare_input(scores)
+    return render_template('result.html', title='paper_scissors', players=players, winner=winner, scores=scores)
 
 @app.route('/paper/scissors', methods=['POST'])
 def paper_scissors_result():
@@ -106,8 +108,8 @@ def paper_scissors_result():
 
 @app.route('/paper/paper')
 def paper_paper():
-    winner = players.compare_input()
-    return render_template('result.html', title='paper_paper', players=players, winner=winner)
+    winner = players.compare_input(scores)
+    return render_template('result.html', title='paper_paper', players=players, winner=winner, scores=scores)
 
 @app.route('/paper/paper', methods=['POST'])
 def paper_paper_result():
@@ -115,8 +117,8 @@ def paper_paper_result():
 
 @app.route('/scissors/paper',)
 def scissors_paper():
-    winner = players.compare_input()
-    return render_template('result.html', title='scissors_paper', players=players, winner=winner)
+    winner = players.compare_input(scores)
+    return render_template('result.html', title='scissors_paper', players=players, winner=winner, scores=scores)
 
 @app.route('/scissors/paper', methods=['POST'])
 def scissors_paper_result():
@@ -124,8 +126,8 @@ def scissors_paper_result():
 
 @app.route('/scissors/scissors')
 def scissors_scissors():
-    winner = players.compare_input()
-    return render_template('result.html', title='scissors_scissors', players=players, winner=winner)
+    winner = players.compare_input(scores)
+    return render_template('result.html', title='scissors_scissors', players=players, winner=winner, scores=scores)
 
 @app.route('/scissors/scissors', methods=['POST'])
 def scissors_scissors_result():
@@ -133,8 +135,8 @@ def scissors_scissors_result():
 
 @app.route('/scissors/rock')
 def scissors_rock():
-    winner = players.compare_input()
-    return render_template('result.html', title='scissors_rock', players=players, winner=winner)
+    winner = players.compare_input(scores)
+    return render_template('result.html', title='scissors_rock', players=players, winner=winner, scores=scores)
 
 @app.route('/scissors/rock', methods=['POST'])
 def scissors_rock_result():
