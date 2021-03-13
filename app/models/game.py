@@ -19,3 +19,6 @@ class Game:
 
     def reset_game(self):
         self.players.clear()
+
+    def reset_choice(self):
+        print(self.players[0].choice)

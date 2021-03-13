@@ -16,8 +16,12 @@
     <h2>{{players.players[1].name}} Wins!</h2>
 {% endif %}
 
-<form class="form" action="/play" method="get">
-    <input type="submit" value="Reset">
+<form class="form" action="/" method="post">
+    <input type="submit" value="Restart">
+</form>
+
+<form class="form" action="/play-again" method="post">
+    <input type="submit" value="Play Again">
 </form>
 
 {% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if players|length == 0 %}
+
+    <h1>{{players.players[0].name}}</h1>
+    <form class="form" action="/play-again" method="post">
+        <ul>
+            <li>
+                <label for="choice">Choice</label>
+                <input type="Radio" name="choice" id="rock" value="rock"> Rock
+                <input type="Radio" name="choice" id="scissors" value="scissors"> Scissors
+                <input type="Radio" name="choice" id="paper" value="paper"> Paper
+            </li>
+            <li>
+                <input type="submit" value="Next Player">
+            </li>
+        </ul>
+    </form>
+
+    {% endif %}
+
+    {% if players|length == 1 %}
+
+    <h1>players.players[1].name</h1>
+    <form class="form" action="/play-again" method="post">
+        <ul>
+            <li>
+                <label for="choice">Choice</label>
+                <input type="Radio" name="choice" id="rock" value="rock"> Rock
+                <input type="Radio" name="choice" id="scissors" value="scissors"> Scissors
+                <input type="Radio" name="choice" id="paper" value="paper"> Paper
+            </li>
+            <li>
+                <input type="submit" value="Confirm">
+            </li>
+        </ul>
+    </form>
+
+    {% endif %}
+
+    {% if players|length == 2 %}
+
+    <form class="form" action="/{{players[0].choice}}/{{players[1].choice}}" method="post">
+        <input type="submit" value="Play">
+    </form>
+
+    {% endif %}
+
+{% endblock %}
