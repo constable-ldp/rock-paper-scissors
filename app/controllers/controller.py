@@ -2,43 +2,66 @@ from flask import render_template, request, redirect
 from app import app
 from app.models.game import Game
 from app.models.player import Player
+import random
 
 players = Game([])
+names = []
 
 @app.route('/')
 def index():
     return render_template('index.html', title='Home')
 
-@app.route('/', methods=['POST'])
+@app.route('/play/restart', methods=['POST'])
 def restart():
     players.reset_game()
+    names.clear()
     return redirect('/')
+
+@app.route('/play-again/restart', methods=['POST'])
+def again_restart():
+    players.reset_game()
+    return redirect('/play-again')
 
 @app.route('/play')
 def play():
-    return render_template('play.html', title='Play', players=players.players)
+    return render_template('play.html', title='Play', players=players.players, names=names)
 
 @app.route('/play', methods=['POST'])
 def set_up_game():
     name = request.form['name']
     choice = request.form['choice']
+    names.append(name)
+    print(names)
     new_player = Player(name, choice)
     players.add_player(new_player)
     return redirect('/play')
 
+@app.route('/play-computer')
+def play_computer():
+    return render_template('play.html', title='Play', players=players.players)
+
+@app.route('/play-computer', methods=['POST'])
+def play_computer_set_up():
+    computer = Player('Computer', random.choice(['rock', 'paper', 'scissors']))
+    players.add_player(computer)
+    return redirect('/play-computer')
+
 @app.route('/play-again')
 def play_again():
-    return render_template('play_again.html', title='Play', players=players.players)
+    return render_template('play-again.html', title='Play again', players=players.players, names=names)
 
 @app.route('/play-again', methods=['POST'])
 def same_players_reset():
-    players.reset_choice()
+    name = request.form['name']
+    choice = request.form['choice']
+    new_player = Player(name, choice)
+    players.add_player(new_player)
     return redirect('/play-again')
+
 
 @app.route('/rock/rock')
 def rock_draw():
     winner = players.compare_input()
-    players.reset_game()
     return render_template('result.html', title='rock_rock', players=players, winner=winner)
 
 @app.route('/rock/rock', methods=['POST'])

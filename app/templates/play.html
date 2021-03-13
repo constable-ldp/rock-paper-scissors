@@ -3,17 +3,17 @@
 {% block content %}
 
     {% if players|length == 0 %}
-
+    
     <h1>Player 1</h1>
     <form class="form" action="/play" method="post">
         <ul>
             <li>
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" value="Player 1">   
+                <input type="text" name="name" id="name" value="Player 1">  
             </li>
             <li>
                 <label for="choice">Choice</label>
-                <input type="Radio" name="choice" id="rock" value="rock"> Rock
+                <input type="Radio" name="choice" id="rock" value="rock" checked> Rock
                 <input type="Radio" name="choice" id="scissors" value="scissors"> Scissors
                 <input type="Radio" name="choice" id="paper" value="paper"> Paper
             </li>
@@ -27,16 +27,31 @@
 
     {% if players|length == 1 %}
 
+        {% if players[0].name == 'Computer' %}
+
+    <h1>Player</h1>
+
+    <form class="form" action="/play" method="post">
+        <ul>
+            <li>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="Player">   
+            </li>
+
+        {%else%}
+    
     <h1>Player 2</h1>
+
     <form class="form" action="/play" method="post">
         <ul>
             <li>
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" value="Player 2">   
             </li>
+        {%endif%}
             <li>
                 <label for="choice">Choice</label>
-                <input type="Radio" name="choice" id="rock" value="rock"> Rock
+                <input type="Radio" name="choice" id="rock" value="rock" checked> Rock
                 <input type="Radio" name="choice" id="scissors" value="scissors"> Scissors
                 <input type="Radio" name="choice" id="paper" value="paper"> Paper
             </li>
