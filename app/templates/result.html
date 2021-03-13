@@ -8,12 +8,16 @@
     <h2>Draw</h2>
 {% endif %}
 
-{% if winner == players[0] %}
-    <h2>{{players[0].name}} Wins!</h2>
+{% if winner == players.players[0] %}
+    <h2>{{players.players[0].name}} Wins!</h2>
 {% endif %}
 
-{% if winner == players[1] %}
-    <h2>{{players[1].name}} Wins!</h2>
+{% if winner == players.players[1] %}
+    <h2>{{players.players[1].name}} Wins!</h2>
 {% endif %}
+
+<form class="form" action="/play" method="get">
+    <input type="submit" value="Reset">
+</form>
 
 {% endblock %}

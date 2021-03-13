@@ -16,3 +16,6 @@ class Game:
             return self.players[0]
         else:
             return self.players[1]
+
+    def reset_game(self):
+        self.players.clear()
