@@ -4,7 +4,7 @@ from app.models.game import Game
 from app.models.player import Player
 import random
 
-scores = [0, 0]
+scores = []
 players = Game([])
 names = []
 
@@ -16,7 +16,7 @@ def index():
 def restart():
     players.reset_game()
     names.clear()
-    scores = [0, 0]
+    scores.clear()
     return redirect('/')
 
 @app.route('/play-again/restart', methods=['POST'])

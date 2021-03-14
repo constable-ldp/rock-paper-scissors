@@ -2,31 +2,38 @@
 
 {% block content %}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Rock, Paper, Scissors</title>
-</head>
-<body>
+<div class=centre-box>
 
-<h1>Rock, Paper, Scissors!</h1>
+<h1>{{players.players[0].name}}: {{scores[0]}}  {{players.players[1].name}}: {{scores[1]}}</h1>
 
 {% if winner == None %}
-    <h2>Draw</h2>
+    <h2>Draw!</h2>
+    <p>
+        Both players played {{players.players[0].choice.capitalize()}}
+    </p>
 {% endif %}
 
 {% if winner == players.players[0] %}
-    <h2>{{players.players[0].name}} {{scores[0]}} Wins!</h2>
+    <h2>{{players.players[0].name}} Wins! </h2>
+    <p>
+        {{players.players[0].name}} played {{players.players[0].choice.capitalize()}} and {{players.players[1].name}} played {{players.players[1].choice.capitalize()}} 
+    </p>
 {% endif %}
 
 {% if winner == players.players[1] %}
-    <h2>{{players.players[1].name}} {{scores[1]}} Wins!</h2>
+    <h2>{{players.players[1].name}} Wins!</h2>
+    <p>
+        {{players.players[0].name}} played {{players.players[0].choice.capitalize()}} and {{players.players[1].name}} played {{players.players[1].choice.capitalize()}} 
+    </p>
 {% endif %}
 
-<form class="form" action="/play/restart" method="post">
-    <input type="submit" value="Restart">
-</form>
+    <form class="start-form" action="/play/restart" method="post">
+        <input type="submit" value="Restart">
+    </form>
 
-<form class="form" action="/play-again/restart" method="post">
-    <input type="submit" value="Play Again">
-</form>
+    <form class="start-form" action="/play-again/restart" method="post">
+        <input type="submit" value="Play Again">
+    </form>
+</div>
 
 {% endblock %}

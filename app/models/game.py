@@ -9,7 +9,11 @@ class Game:
         self.players.append(player)
 
     def compare_input(self, scores):
+        scores.append(0)
+        scores.append(0)
         if self.players[0].choice == self.players[1].choice:
+            scores[0]+=.5
+            scores[1]+=.5
             return 
         if self.players[0].choice == 'rock' and self.players[1].choice == 'scissors' \
         or self.players[0].choice == 'paper' and self.players[1].choice == 'rock' \

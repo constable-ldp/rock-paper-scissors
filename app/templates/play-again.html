@@ -2,69 +2,74 @@
 
 {% block content %}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Rock, Paper, Scissors</title>
-</head>
-<body>
-
     {% if players|length == 0 %}
 
-    <h1>Player 1</h1>
+    <div class="centre-box"></div>
+    <h1>{{names[0]}}</h1>
     <form class="form" action="/play-again" method="post">
         <ul>
-            <li>
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" value="{{names[0]}}" readonly="readonly">  
+            <li>   
+                <input type="hidden" name="name" id="name" value="{{names[0]}}" readonly="readonly">  
             </li>
             <li>
-                <label for="choice">Choice</label>
-                <input type="Radio" name="choice" id="rock" value="rock" checked> Rock
-                <input type="Radio" name="choice" id="scissors" value="scissors"> Scissors
-                <input type="Radio" name="choice" id="paper" value="paper"> Paper
+                <div class="radio-toolbar">
+                    <input type="radio" id="rock" name="choice" value="rock" checked>
+                    <label for="rock">Rock</label>
+                
+                    <input type="radio" id="scissors" name="choice" value="scissors">
+                    <label for="scissors">Scissors</label>
+                
+                    <input type="radio" id="paper" name="choice" value="paper">
+                    <label for="paper">Paper</label>
+                </div>
             </li>
             <li >
                 <input type="submit" value="Next Player">
             </li>
         </ul>
     </form>
-
+    </div>
     {% endif %}
 
     {% if players|length == 1 %}
 
         {% if players[0].name == 'Computer' %}
-
-    <h1>Player</h1>
+    <div class="centre-box">
+    <h1>{{names[1]}}</h1>
 
     <form class="form" action="/play-again" method="post">
         <ul>
             <li>
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" value="{{names[1]}}" readonly="readonly">   
+                <input type="hidden" name="name" id="name" value="{{names[1]}}" readonly="readonly">   
             </li>
 
         {%else%}
-    
-    <h1>Player 2</h1>
-
+    <div class="centre-box">
+    <h1>{{names[1]}}</h1>
     <form class="form" action="/play-again" method="post">
         <ul>
             <li>
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" value="{{names[1]}}" readonly="readonly">   
+                <input type="hidden" name="name" id="name" value="{{names[1]}}" readonly="readonly">   
             </li>
         {%endif%}
             <li>
-                <label for="choice">Choice</label>
-                <input type="Radio" name="choice" id="rock" value="rock" checked> Rock
-                <input type="Radio" name="choice" id="scissors" value="scissors"> Scissors
-                <input type="Radio" name="choice" id="paper" value="paper"> Paper
+                <div class="radio-toolbar">
+                    <input type="radio" id="rock" name="choice" value="rock" checked>
+                    <label for="rock">Rock</label>
+                
+                    <input type="radio" id="scissors" name="choice" value="scissors">
+                    <label for="scissors">Scissors</label>
+                
+                    <input type="radio" id="paper" name="choice" value="paper">
+                    <label for="paper">Paper</label>
+                </div>
             </li>
             <li>
                 <input type="submit" value="Confirm">
             </li>
         </ul>
     </form>
+    </div>
 
     {% endif %}
 
