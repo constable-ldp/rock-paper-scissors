@@ -22,6 +22,9 @@ def restart():
 @app.route('/play-again/restart', methods=['POST'])
 def again_restart():
     players.reset_game()
+    if names[0] == 'Computer':
+        computer = Player('Computer', random.choice(['rock', 'paper', 'scissors']))
+        players.add_player(computer)
     return redirect('/play-again')
 
 @app.route('/play')
@@ -33,7 +36,6 @@ def set_up_game():
     name = request.form['name']
     choice = request.form['choice']
     names.append(name)
-    print(names)
     new_player = Player(name, choice)
     players.add_player(new_player)
     return redirect('/play')
@@ -46,6 +48,7 @@ def play_computer():
 def play_computer_set_up():
     computer = Player('Computer', random.choice(['rock', 'paper', 'scissors']))
     players.add_player(computer)
+    names.append('Computer')
     return redirect('/play-computer')
 
 @app.route('/play-again')
