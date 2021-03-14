@@ -5,15 +5,40 @@
 <title>Rock, Paper, Scissors</title>
 </head>
 <body>
+    <div class="centre-box">
+        <h1>Rock, Paper, Scissors!</h1>
+        <h2>Rules:</h2>
+        <div class="rules-text">
+            <p>
+                Choose <b>1 Player</b> to play against the computer. 
+            </p>
+            <p>
+                Choose <b>2 Player</b> to play against a friend.
+            </p>
+            <p>
+                Enter your name, and choose Rock, Paper or Scissors.
+            </p>
+            <p>
+                Rock beats Scissors, but loses to Paper.
+            </p>
+            <p>
+                Paper beats Rock, but loses to Scissors.
+            </p>
+            <p>
+                Scissors beats Rock, but loses to Paper.
+            </p>
+            <p>
+                Play again, or restart to return to this page.
+            </p>
+        </div>
 
-<h1>Rock, Paper, Scissors!</h1>
+        <form class="start-form" action="/play-computer" method="post">
+            <input type="submit" value="1 Player">
+        </form>
 
-<form class="form" action="/play-computer" method="post">
-    <input type="submit" value="1 Player">
-</form>
-
-<form class="form" action="/play" method="get">
-    <input type="submit" value="2 Player">
-</form>
+        <form class="start-form" action="/play" method="get">
+            <input type="submit" value="2 Player">
+        </form>
+    </div>
 
 {% endblock %}
