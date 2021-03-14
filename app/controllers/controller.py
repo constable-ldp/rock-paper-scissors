@@ -40,16 +40,12 @@ def set_up_game():
     players.add_player(new_player)
     return redirect('/play')
 
-@app.route('/play-computer')
-def play_computer():
-    return render_template('play.html', title='Play', players=players.players)
-
 @app.route('/play-computer', methods=['POST'])
 def play_computer_set_up():
     computer = Player('Computer', random.choice(['rock', 'paper', 'scissors']))
     players.add_player(computer)
     names.append('Computer')
-    return redirect('/play-computer')
+    return redirect('/play')
 
 @app.route('/play-again')
 def play_again():
